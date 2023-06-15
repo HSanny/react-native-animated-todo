@@ -15,6 +15,7 @@ import AnimatedColorBox from '../components/animated_color_box';
 import MastHead from '../components/masthead';
 import NavBar from '../components/navBar';
 
+// TODO make it a dynamic list that can connect to database
 const initialData = [
     {
         id: shortid.generate(),
@@ -66,15 +67,15 @@ export default function MainScreen() {
         })
     }, []);
 
-    const handleFinishEditingTaskItem = useCallback( _item => {
+    const handleFinishEditingTaskItem = useCallback(_item => {
         setEditingItemId(null);
     }, []);
 
-    const handlePressTaskItemLabel = useCallback( item => {
+    const handlePressTaskItemLabel = useCallback(item => {
         setEditingItemId(item.id);
     }, []);
 
-    const handleRemoveItem = useCallback( item => {
+    const handleRemoveItem = useCallback(item => {
         setData(prevData => {
             const newData = prevData.filter(i => i !== item);
             return newData;
@@ -105,10 +106,10 @@ export default function MainScreen() {
                 pt="20px"
                 bg={useColorModeValue('warmGray.50', 'primary.900')}
                 flex={1}
-                // alignItems="center"
-                // w="full"
+            // alignItems="center"
+            // w="full"
             >
-                <TaskList 
+                <TaskList
                     data={data}
                     onToggleItem={handleToggleTaskItem}
                     onChangeSubject={handleChangeTaskItemSubject}
@@ -126,7 +127,7 @@ export default function MainScreen() {
                     onFinishEdit={() => setEditing(false)}
                     onPressLabel={() => setEditing(true)}
                 /> */}
-{/* 
+                {/* 
                 <Box p={10} bg={useColorModeValue('red.500', 'yellow.500')}>
                     <Text> Hello </Text>
                 </Box> */}
@@ -138,10 +139,10 @@ export default function MainScreen() {
                 renderInPortal={false}
                 size="sm"
                 icon={
-                    <Icon 
+                    <Icon
                         color="white"
                         as={
-                            <AntDesign name="plus"/>
+                            <AntDesign name="plus" />
                         }
                         size="sm"
                     />
@@ -161,6 +162,6 @@ export default function MainScreen() {
                     setEditingItemId(id)
                 }}
             />
-            </AnimatedColorBox>
+        </AnimatedColorBox>
     )
 }
